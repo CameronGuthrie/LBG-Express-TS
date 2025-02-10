@@ -8,4 +8,6 @@ export function errorHandler(err: unknown, req: Request, res: Response, next: Ne
     } else {
         res.status(500).json({ message: "An unknown error occurred."});
     }
+
+    next();
 }

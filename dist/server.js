@@ -5,7 +5,6 @@ const app = express();
 const PORT = 3000;
 // Apply middleware
 app.use(logger);
-app.use(errorHandler);
 app.get("/error", (req, res) => {
     throw new Error("This is a test error!");
 });
@@ -33,6 +32,7 @@ app.get("/user", (req, res) => {
         res.send(`user id: ${userId}`);
     }
 });
+app.use(errorHandler);
 // start the server
 app.listen(PORT, () => {
     console.log(`server is running at http://127.0.0.1:${PORT}`);

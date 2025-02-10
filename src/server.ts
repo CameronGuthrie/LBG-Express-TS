@@ -7,7 +7,6 @@ const PORT = 3000;
 
 // Apply middleware
 app.use(logger);
-app.use(errorHandler);
 
 app.get("/error", (req: Request, res: Response) => {
     throw new Error("This is a test error!");
@@ -46,6 +45,7 @@ app.get("/user", (req: Request, res: Response) => {
 
 });
 
+app.use(errorHandler);
 
 // start the server
 app.listen(PORT, () => {
