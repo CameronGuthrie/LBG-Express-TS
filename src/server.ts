@@ -18,10 +18,26 @@ app.get("/about", (req: Request, res: Response) => {
     res.send("This is the about page");
 });
 
-// Dynamic route
+// Dynamic route - Params
 app.get("/user/:id", (req: Request, res: Response) => {
+
     const userId = req.params.id;
     res.send(`User ID: ${userId}`);
+
+});
+
+
+// Dynamic route - Query
+app.get("/user", (req: Request, res: Response) => {
+
+    const userId = req.query.id;
+
+    if (!userId) {
+        res.status(400).send("need User ID");
+    } else {
+        res.send(`user id: ${userId}`);
+    }
+
 });
 
 

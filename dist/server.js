@@ -9,9 +9,21 @@ app.get("/", (req, res) => {
     // res.send("Hello! Express with TypeScript :)");
     res.send("Hello! Express with Middleware");
 });
-// about route
+// About route
 app.get("/about", (req, res) => {
     res.send("This is the about page");
+});
+// Dynamic route
+app.get("/user", (req, res) => {
+    // const userId = req.params.id;
+    // res.send(`User ID: ${userId}`);
+    const userId = req.query.id;
+    if (!userId) {
+        res.status(400).send("need User ID");
+    }
+    else {
+        res.send(`user id: ${userId}`);
+    }
 });
 // start the server
 app.listen(PORT, () => {
