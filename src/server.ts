@@ -13,7 +13,9 @@ const __dirname = path.dirname(__filename);
 
 // Apply middleware
 app.use(logger);
+app.use(express.json());
 app.use("/users", userRoutes);
+
 
 // serve static files
 app.use(express.static(path.join(__dirname, "public")));
