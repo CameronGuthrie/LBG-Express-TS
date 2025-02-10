@@ -1,11 +1,17 @@
 import express, { Request, Response } from "express";
 import { logger } from "./middleware.js"
+import { errorHandler } from "./errorMiddleware.js";
 
 const app = express();
 const PORT = 3000;
 
 // Apply middleware
-app.use(logger)
+app.use(logger);
+app.use(errorHandler);
+
+app.get("/error", (req: Request, res: Response) => {
+    throw new Error("This is a test error!");
+});
 
 // Root route
 app.get("/", (req: Request, res: Response) => {
