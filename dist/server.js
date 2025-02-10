@@ -1,10 +1,16 @@
 import express from "express";
 import { logger } from "./middleware.js";
 import { errorHandler } from "./errorMiddleware.js";
+import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
 const PORT = 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Apply middleware
 app.use(logger);
+// serve static files
+app.use(express.static(path.join(__dirname, "public")));
 app.get("/error", (req, res) => {
     throw new Error("This is a test error!");
 });
