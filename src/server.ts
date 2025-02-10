@@ -13,6 +13,15 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello! Express with Middleware");
 });
 
+// about route
+app.get("/about", (req: Request, res: Response) => {
+    res.send("This is the about page");
+});
+
+
+
+
+
 // start the server
 app.listen(PORT, () => {
     console.log(`server is running at http://127.0.0.1:${PORT}`);
