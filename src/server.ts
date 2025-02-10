@@ -13,13 +13,16 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello! Express with Middleware");
 });
 
-// about route
+// About route
 app.get("/about", (req: Request, res: Response) => {
     res.send("This is the about page");
 });
 
-
-
+// Dynamic route
+app.get("/user/:id", (req: Request, res: Response) => {
+    const userId = req.params.id;
+    res.send(`User ID: ${userId}`);
+});
 
 
 // start the server
